@@ -4,6 +4,8 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import pandas as pd
 import sys 
 import re 
+from pathlib import Path 
+import os 
 
 channels = [
     {"name": "Atrioc", "channel_id": "UCgv4dPk_qZNAbUW9WkuLPSA"}
@@ -26,9 +28,15 @@ def get_video_id(link):
     watch = link.find('?v=')
     video_id = link[watch + 3:]
 
+    return video_id
 
+def write_to_transcript_csv(author, text, link):
+    csv_path = os.path.join(os.path.dirname(__file__), '..', 'csv', 'transcripts.csv')
+    with open('transcripts.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([author, text, link])
 
 
 if __name__ == "__main__":
-    a = check_new_videos('', channels['name' == 'atrioc']['channel_id'])
-    print(a)
+    a = new_video_transcript(channels['name' == 'atrioc']['channel_id'])
+  
