@@ -45,7 +45,7 @@ def transcript_to_text(transcript):
     return transcript_text
 
 def edit_json(author, new_link):
-   JSON_path = os.path.join(os.path.dirname(__file__), '..', 'csv', 'cache.json')
+   JSON_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'cache.json')
     
    with open(JSON_path, 'r') as file:
         cache = json.load(file)
@@ -56,7 +56,7 @@ def edit_json(author, new_link):
         json.dump(cache, file, indent=2)
 
 def check_in_json(author, video_link):
-    JSON_path = os.path.join(os.path.dirname(__file__), '..', 'csv', 'cache.json')
+    JSON_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'cache.json')
     with open(JSON_path, 'r') as file:
         cache = json.load(file)
         
